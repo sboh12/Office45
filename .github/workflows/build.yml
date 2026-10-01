@@ -35,15 +35,17 @@ jobs:
           echo "keyAlias=${{ secrets.ANDROID_KEY_ALIAS }}" >> key.properties
           echo "storeFile=upload-keystore.jks" >> key.properties
 
-      - name: Install dependencies
-        run: flutter pub get
+      - name: Clean Cache and Install dependencies
+        run: |
+          flutter clean
+          flutter pub get
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
         
       - name: Build AAB
-       env:
-          GRADLE_PROPERTY_distributionUrl: "https://services.gradle.org/distributions/gradle-9.8.0-all.zip"
+        env:
+          GRADLE_PROPERTY_distributionUrl: "https://gradle.org"
         run: flutter build appbundle --release
 
       - name: Upload AAB artifact
@@ -51,3 +53,4 @@ jobs:
         with:
           name: release-aab
           path: build/app/outputs/bundle/release/app-release.aab
+
