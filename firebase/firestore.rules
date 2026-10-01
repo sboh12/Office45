@@ -1,0 +1,345 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/{document} {
+      allow create: if request.auth.uid == document;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if request.auth.uid == document;
+    }
+
+    match /chats/{document} {
+      allow create: if request.auth != null;
+      allow read: if true;
+      allow write: if request.auth != null;
+      allow delete: if false;
+    }
+
+    match /chat_messages/{document} {
+      allow create: if request.auth != null;
+      allow read: if true;
+      allow write: if request.auth != null;
+      allow delete: if request.auth != null;
+    }
+
+    match /groupChats/{document} {
+      allow create: if request.auth != null;
+      allow read: if true;
+      allow write: if request.auth != null;
+      allow delete: if request.auth != null;
+    }
+
+    match /GroupInfo/{document} {
+      allow create: if request.auth != null;
+      allow read: if true;
+      allow write: if request.auth != null;
+      allow delete: if request.auth != null;
+    }
+
+    match /groupChatMessages/{document} {
+      allow create: if request.auth != null;
+      allow read: if true;
+      allow write: if request.auth != null;
+      allow delete: if request.auth != null;
+    }
+
+    match /School/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if request.auth != null;
+      allow delete: if request.auth != null;
+    }
+
+    match /Subjects/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if request.auth != null;
+    }
+
+    match /Subjects/{parent}/Notes/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if request.auth != null;
+    }
+
+    match /{path=**}/Notes/{document} {
+      allow read: if true;
+    }
+
+
+    match /Subjects/{parent}/Activity/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if request.auth != null;
+      allow delete: if request.auth != null;
+    }
+
+    match /{path=**}/Activity/{document} {
+      allow read: if true;
+    }
+
+
+    match /Subjects/{parent}/Announcement/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if request.auth != null;
+      allow delete: if request.auth != null;
+    }
+
+    match /{path=**}/Announcement/{document} {
+      allow read: if true;
+    }
+
+
+    match /School/{parent}/SchoolEvents/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if request.auth != null;
+    }
+
+    match /{path=**}/SchoolEvents/{document} {
+      allow read: if true;
+    }
+
+
+    match /School/{parent}/Students/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if request.auth != null;
+      allow delete: if request.auth != null;
+    }
+
+    match /{path=**}/Students/{document} {
+      allow read: if true;
+    }
+
+
+    match /School/{parent}/SchoolSubjects/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if request.auth != null;
+      allow delete: if request.auth != null;
+    }
+
+    match /{path=**}/SchoolSubjects/{document} {
+      allow read: if true;
+    }
+
+
+    match /Subjects/{parent}/StudentSubjects/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if request.auth != null;
+    }
+
+    match /{path=**}/StudentSubjects/{document} {
+      allow read: if true;
+    }
+
+
+    match /Subjects/{parent}/Comments/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if request.auth != null;
+      allow delete: if request.auth != null;
+    }
+
+    match /{path=**}/Comments/{document} {
+      allow read: if true;
+    }
+
+
+    match /Subjects/{parent}/ActivityComments/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if request.auth != null;
+      allow delete: if request.auth != null;
+    }
+
+    match /{path=**}/ActivityComments/{document} {
+      allow read: if true;
+    }
+
+
+    match /School/{parent}/EventsComments/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if request.auth != null;
+      allow delete: if request.auth != null;
+    }
+
+    match /{path=**}/EventsComments/{document} {
+      allow read: if true;
+    }
+
+
+    match /School/{parent}/EventReactions/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if request.auth != null;
+      allow delete: if request.auth != null;
+    }
+
+    match /{path=**}/EventReactions/{document} {
+      allow read: if true;
+    }
+
+
+    match /Subjects/{parent}/Resources/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if request.auth != null;
+      allow delete: if request.auth != null;
+    }
+
+    match /{path=**}/Resources/{document} {
+      allow read: if true;
+    }
+
+
+    match /Subjects/{parent}/Answers/{document} {
+      allow create: if request.auth != null;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /{path=**}/Answers/{document} {
+      allow read: if true;
+    }
+
+
+    match /Subjects/{parent}/Ratings/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if request.auth != null;
+      allow delete: if request.auth != null;
+    }
+
+    match /{path=**}/Ratings/{document} {
+      allow read: if true;
+    }
+
+
+    match /School/{parent}/Applications/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if request.auth != null;
+    }
+
+    match /{path=**}/Applications/{document} {
+      allow read: if true;
+    }
+
+
+    match /Subjects/{parent}/notesRating/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if request.auth != null;
+      allow delete: if get(/databases/$(database)/documents/Subjects/$(parent)).data.Teacher == /databases/$(database)/documents/users/$(request.auth.uid);
+    }
+
+    match /{path=**}/notesRating/{document} {
+      allow read: if true;
+    }
+
+
+    match /School/{parent}/EventComments/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if request.auth != null;
+    }
+
+    match /{path=**}/EventComments/{document} {
+      allow read: if true;
+    }
+
+
+    match /School/{parent}/PassRate/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if request.auth != null;
+      allow delete: if request.auth != null;
+    }
+
+    match /{path=**}/PassRate/{document} {
+      allow read: if true;
+    }
+
+
+    match /Subjects/{parent}/Passrate/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if request.auth != null;
+      allow delete: if true;
+    }
+
+    match /{path=**}/Passrate/{document} {
+      allow read: if true;
+    }
+
+
+    match /Documents/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if request.auth != null;
+      allow delete: if request.auth != null;
+    }
+
+    match /Subjects/{parent}/Curriculum/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if request.auth != null;
+      allow delete: if request.auth != null;
+    }
+
+    match /{path=**}/Curriculum/{document} {
+      allow read: if true;
+    }
+
+
+    match /broadcast/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if request.auth != null;
+      allow delete: if request.auth != null;
+    }
+
+    match /chats/{parent}/active_call/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /{path=**}/active_call/{document} {
+      allow read: if true;
+    }
+
+
+    match /chat_history/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /call_participants/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /ff_user_push_notifications/{id} {
+      allow read, update, delete: if false;
+      allow create: if /databases/$(database)/documents/users/$(request.auth.uid) == request.resource.data.sender;
+    }
+  }
+}

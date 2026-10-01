@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "743840129040",
+    "project_id": "truechat-678cc",
+    "storage_bucket": "truechat-678cc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:743840129040:android:003e6a96ac895e479faa95",
+        "android_client_info": {
+          "package_name": "com.mycompany.office45"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "743840129040-pemv0fm3nkt0o9m8l3a4ic9lp2vd60a1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mycompany.office45",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGqf5qxSLoetbpfivoy36c5COBEat_rRw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
