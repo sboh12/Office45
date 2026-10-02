@@ -45,7 +45,7 @@ jobs:
         
       - name: Build AAB
         env:
-          GRADLE_PROPERTY_distributionUrl: "https://services.gradle.org/distributions/gradle-8.4-all.zip"
+          GRADLE_PROPERTY_distributionUrl: "https://services.gradle.org/distributions/gradle-8.14.4-all.zip"
         run: flutter build appbundle --release
 
       - name: Upload AAB artifact
