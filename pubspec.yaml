@@ -150,7 +150,7 @@ dependencies:
   sticky_headers: 0.3.0+2
   stop_watch_timer: 3.0.2
   stream_transform: 2.1.0
-  syncfusion_flutter_pdfviewer: ^28.2.12
+  syncfusion_flutter_pdfviewer: ^27.2.5
   table_calendar: 3.1.1
   text_search: 1.0.1
   timeago: 3.6.1
