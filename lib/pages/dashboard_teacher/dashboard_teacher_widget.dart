@@ -252,7 +252,7 @@ class _DashboardTeacherWidgetState extends State<DashboardTeacherWidget>
                                 options: [
                                   ChipData('Test', Icons.textsms),
                                   ChipData('Assignment', Icons.calendar_today),
-                                  ChipData('Exam', FontAwesomeIcons.paperclip.data)
+                                  ChipData('Exam', FontAwesomeIcons.paperclip)
                                 ],
                                 onChanged: (val) async {
                                   safeSetState(() => _model.choiceChipsValue =
