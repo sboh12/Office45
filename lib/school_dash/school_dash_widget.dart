@@ -901,7 +901,7 @@ class _SchoolDashWidgetState extends State<SchoolDashWidget>
                                                             ChipData(
                                                                 'Documents',
                                                                 FontAwesomeIcons
-                                                                    .paperclip.data)
+                                                                    .paperclip)
                                                           ],
                                                           onChanged: (val) =>
                                                               safeSetState(() =>
