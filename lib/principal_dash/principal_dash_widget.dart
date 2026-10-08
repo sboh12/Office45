@@ -654,7 +654,7 @@ class _PrincipalDashWidgetState extends State<PrincipalDashWidget>
                                                               ChipData(
                                                                   'Exam',
                                                                   FontAwesomeIcons
-                                                                      .paperclip.data)
+                                                                      .paperclip)
                                                             ],
                                                             onChanged: (val) =>
                                                                 safeSetState(() =>
