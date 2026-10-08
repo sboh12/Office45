@@ -7,14 +7,14 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up JDK 17
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: 'temurin'
           java-version: '17'
@@ -22,6 +22,7 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
+          flutter-version: '3.24.5'
           channel: 'stable'
 
       - name: Decode Keystore
@@ -35,22 +36,14 @@ jobs:
           echo "keyAlias=${{ secrets.ANDROID_KEY_ALIAS }}" >> key.properties
           echo "storeFile=upload-keystore.jks" >> key.properties
 
-      - name: Clean Cache and Install dependencies
-        run: |
-          flutter clean
-          flutter pub get
+      - name: Install dependencies
+        run: flutter pub get
 
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v4
-        
       - name: Build AAB
-        env:
-          GRADLE_PROPERTY_distributionUrl: "https://services.gradle.org/distributions/gradle-8.14.4-all.zip"
-        run: flutter build appbundle --release --no-tree-shake-icons
+        run: flutter build appbundle --release
 
       - name: Upload AAB artifact
         uses: actions/upload-artifact@v4
         with:
           name: release-aab
           path: build/app/outputs/bundle/release/app-release.aab
-
