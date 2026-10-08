@@ -9,7 +9,13 @@
 -dontwarn org.bouncycastle.jce.provider.BouncyCastleProvider
 -dontwarn org.bouncycastle.pqc.jcajce.provider.BouncyCastlePQCProvider
 -keep class org.xmlpull.v1.** { *; }
+# Rules for Giphy SDK / Fresco (WebpTranscoder)
+-dontwarn com.facebook.imagepipeline.nativecode.WebpTranscoder
+-keep class com.facebook.imagepipeline.nativecode.WebpTranscoder { *; }
 
+# Rules for kotlinx.parcelize (used by Giphy SDK)
+-dontwarn kotlinx.parcelize.Parcelize
+-keep class kotlinx.parcelize.Parcelize { *; }
 
 
 
