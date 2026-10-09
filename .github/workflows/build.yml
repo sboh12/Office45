@@ -55,7 +55,11 @@ jobs:
 
       - name: Verify Flutter version
         run: flutter --version
-
+        
+      - name: DEBUG - Show keystore aliases
+        run: |
+          keytool -list -keystore android/upload-keystore.jks -storepass "${{ secrets.ANDROID_STORE_PASSWORD }}"
+      
       - name: Build AAB
         run: flutter build appbundle --release
 
