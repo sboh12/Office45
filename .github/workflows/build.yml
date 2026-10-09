@@ -22,7 +22,7 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.24.5'
+          flutter_version: '3.24.5'
           channel: 'stable'
 
       - name: Decode Keystore
@@ -35,6 +35,17 @@ jobs:
           echo "keyPassword=${{ secrets.ANDROID_KEY_PASSWORD }}" >> android/key.properties
           echo "keyAlias=${{ secrets.ANDROID_KEY_ALIAS }}" >> android/key.properties
           echo "storeFile=upload-keystore.jks" >> android/key.properties
+
+      - name: DEBUG - Show files and key.properties
+        run: |
+          echo "=== android/ contents ==="
+          ls -la android/
+          echo ""
+          echo "=== android/key.properties contents ==="
+          cat android/key.properties
+          echo ""
+          echo "=== android/upload-keystore.jks size ==="
+          ls -la android/upload-keystore.jks
 
       - name: Install dependencies
         run: flutter pub get
