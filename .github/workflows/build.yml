@@ -36,16 +36,19 @@ jobs:
           echo "keyAlias=${{ secrets.ANDROID_KEY_ALIAS }}" >> android/key.properties
           echo "storeFile=$GITHUB_WORKSPACE/android/upload-keystore.jks" >> android/key.properties
 
-      - name: DEBUG - Show files and key.properties
+      - name: DEBUG - Verify signing config
         run: |
-          echo "=== android/ contents ==="
-          ls -la android/
-          echo ""
-          echo "=== android/key.properties contents ==="
+          echo "=== android/key.properties ==="
           cat android/key.properties
           echo ""
-          echo "=== android/upload-keystore.jks size ==="
+          echo "=== Keystore file size ==="
           ls -la android/upload-keystore.jks
+          echo ""
+          echo "=== First 100 bytes of the keystore (hex) ==="
+          head -c 100 android/upload-keystore.jks | xxd | head -5
+          echo ""
+          echo "=== Keytool verification ==="
+          keytool -list -keystore android/upload-keystore.jks -storepass "${{ secrets.ANDROID_STORE_PASSWORD }}" -alias "${{ secrets.ANDROID_KEY_ALIAS }}" 2>&1 || echo "KEYTOOL FAILED - PASSWORD OR FILE IS WRONG"
 
       - name: Install dependencies
         run: flutter pub get
@@ -56,6 +59,11 @@ jobs:
       - name: Build AAB
         run: flutter build appbundle --release
 
+      - name: Upload AAB artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-aab
+          path: build/app/outputs/bundle/release/app-release.aab
       - name: Upload AAB artifact
         uses: actions/upload-artifact@v4
         with:
